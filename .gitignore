@@ -1,0 +1,16 @@
+# directories
+Configs/
+convertion/
+temp/
+uLabelDose/
+.vscode/
+scripts/
+__pycache__/
+
+# files
+grad_cam.py
+test.py
+setup.py
+
+# large pretrained weight files (released separately)
+pre_train_iddpm/*.pt
