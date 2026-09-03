@@ -113,16 +113,16 @@ The train/sample scripts use OpenAI improved-diffusion-style MPI wrappers (`dist
 
 ## Open-Source Weights
 
-We release pretrained weights for all DC2 variants as well as the base backbone, all located in **[pre_train_iddpm](./pre_train_iddpm/)**:
+Pretrained weights for the DC2 variants are released as **GitHub Release assets** (they exceed GitHub's per-file limit for regular git pushes and are therefore not stored in the repository tree; the local [`pre_train_iddpm/`](./pre_train_iddpm/) folder is gitignored).
 
-| Weight file                            | Corresponding model / feType  | Purpose                                        |
-| -------------------------------------- | ----------------------------- | ---------------------------------------------- |
-| `model30W_ViT10W.pt`                   | DC2, `--feType=ViT`           | ViT feature-encoder variant                    |
-| `model30W_ResNet20W.pt`                | DC2, `--feType=ResNet`        | ResNet feature-encoder variant                 |
-| `model30W_LSCC30W.pt`                  | DC2, `--feType=LSCC` (default)| LSCT low-rank sparse compress encoder variant  |
-| `model30W.pt`                          | Base diffusion backbone (iddpm) | Input to the weight merging tools / initialization for the single-control ablation |
+Download the released weights from the [**pretrained-weights**](https://github.com/yqx7150/DCDM/releases/tag/pretrained-weights) release:
 
-The three DC2 weights can be passed either as `--resume_checkpoint` to `image_train_LSCC.py` (fine-tuning from them) or directly as `--model_path` to `image_sample_LSCC.py` for sampling. The `30W` / `20W` / `10W` suffixes in the filenames indicate the magnitude of iterations (300k / 200k / 100k) used for training or merging. The files are large (≈800 MB each); please make sure they are fully downloaded after cloning.
+| Weight file                                        | Corresponding model / feType  | Purpose                                        |
+| -------------------------------------------------- | ----------------------------- | ---------------------------------------------- |
+| [model30W_LSCC30W.pt](https://github.com/yqx7150/DCDM/releases/download/pretrained-weights/model30W_LSCC30W.pt) | DC2, `--feType=LSCC` (default)| LSCT low-rank sparse compress encoder variant  |
+| `model30W_ViT10W.pt` / `model30W_ResNet20W.pt` / `model30W.pt` | —                     | Coming soon                                   |
+
+The DC2 weights can be passed either as `--resume_checkpoint` to `image_train_LSCC.py` (fine-tuning from them) or directly as `--model_path` to `image_sample_LSCC.py` for sampling. The `30W` / `20W` / `10W` suffixes in the filenames indicate the magnitude of iterations (300k / 200k / 100k) used for training or merging.
 
 ---
 
